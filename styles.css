@@ -126,7 +126,7 @@ body {
 .envelope .body {
     position: absolute;
     top: 0;
-    left: -115;
+    left: -115px;
     width: 250%;
     height: 250%;
     padding: 10px;
