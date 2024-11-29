@@ -87,13 +87,15 @@ body {
     align-items: center;
     height: 100vh;
     background-color: #f7f1e3;
+    padding: 0 20px; /* Add padding for smaller screens */
+    box-sizing: border-box;
 }
 
 /* Envelope */
 .envelope {
     position: relative;
-    width: 200px;
-    height: 150px;
+    width: 150px; /* Make envelope smaller for mobile screens */
+    height: 120px; /* Adjust height to match the width */
     background: #ff5757;
     border-radius: 10px;
     cursor: pointer;
@@ -121,8 +123,8 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 200%;
-    height: 200%;
+    width: 250%;
+    height: 250%;
     padding: 10px;
     background: #fff;
     border-radius: 10px;
@@ -152,6 +154,22 @@ body {
 .envelope.opened .body {
     transform: scaleY(1);
 }
+
+/* Ensure envelope fits well on small screens */
+@media (max-width: 768px) {
+    .envelope {
+        width: 160px;  /* Adjust width for smaller screens */
+        height: 130px; /* Adjust height for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .envelope {
+        width: 140px;  /* Adjust further for very small screens */
+        height: 110px; /* Adjust further for very small screens */
+    }
+}
+
 
 .hidden {
     visibility: hidden;
