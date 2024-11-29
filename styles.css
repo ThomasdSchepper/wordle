@@ -80,96 +80,83 @@ body {
     display: none;
 }
 
-.heart {
+/* Envelope container */
+.love-letter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f7f1e3;
+}
+
+/* Envelope */
+.envelope {
     position: relative;
-    width: 300px; /* Larger size for the heart */
-    height: 270px;
-    margin: 50px auto;
+    width: 200px;
+    height: 150px;
+    background: #ff5757;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out;
 }
 
-.heart svg {
-    width: 100%;
-    height: 100%;
-}
-
-.heart path {
-    fill: none;
-    stroke: url(#particleGradient); /* Apply gradient to mimic particles */
-    stroke-width: 6;
-    stroke-dasharray: 1200;
-    stroke-dashoffset: 1200;
-    animation: drawHeart 3s ease-out forwards, particlePulse 3s infinite 3s;
-}
-
-.heart p {
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 2.5em;
-    color: white;
-    font-weight: bold;
-    z-index: 1; /* Ensure text appears above the heart */
-}
-
-/* Fireworks container */
-.fireworks {
+/* Envelope flap */
+.envelope .flap {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 1; /* Behind the text but in front of the heart */
+    height: 50%;
+    background: #ff7675;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    transform-origin: top;
+    transform: rotateX(0deg);
+    transition: transform 0.5s ease-in-out;
+    z-index: 2;
 }
 
-/* Individual firework particles */
-.firework {
+/* Envelope body */
+.envelope .body {
     position: absolute;
-    width: 8px;
-    height: 8px;
-    background-color: #fff; /* Default particle color */
-    border-radius: 50%;
-    animation: fireworkAnimation 1.5s ease-out forwards;
-    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    padding: 10px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.5s ease-in-out;
 }
 
-/* Firework animation */
-@keyframes fireworkAnimation {
-    0% {
-        transform: translate(0, 0) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: translate(calc(var(--x) * 300px), calc(var(--y) * 300px)) scale(0.2);
-        opacity: 0;
-    }
+/* Hidden messages */
+.message {
+    font-size: 1em;
+    color: #2d3436;
+    text-align: center;
+    margin: 10px 0;
 }
 
-@keyframes explode {
-    0% {
-        transform: translate(0, 0) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: translate(calc(var(--x) * 200px), calc(var(--y) * 200px))
-    }}
-
-@keyframes drawHeart {
-    to {
-        stroke-dashoffset: 0;
-    }
+/* Show the letter when opened */
+.envelope.opened .flap {
+    transform: rotateX(-180deg);
 }
 
-@keyframes particlePulse {
-    0%, 100% {
-        stroke-width: 6;
-    }
-    50% {
-        stroke-width: 8;
-    }
+.envelope.opened .body {
+    transform: scaleY(1);
 }
+
+.hidden {
+    visibility: hidden;
+}
+
 
 
 /* Mobielvriendelijk maken */
@@ -181,12 +168,26 @@ body {
     }
 
     #keyboard {
-        grid-template-columns: repeat(9, 1fr);
+        grid-template-columns: repeat(10, 1fr); /* Keep 10 columns for the iPhone 12 layout */
+        gap: 4px; /* Reduce gap between keys for a better fit */
+        max-width: 400px; /* Reduce width to ensure it's well-fitted */
+        margin: 0 auto;
     }
 
     .key {
         font-size: 0.9em;
-        padding: 8px 0;
+        padding: 12px 0; /* Increase the padding for better touch targets */
+        background-color: #818384;
+        color: #ffffff;
+        border-radius: 5px;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+
+    .key.enter, .key.delete {
+        grid-column: span 2;
+        font-size: 1em;
+        padding: 14px 0; /* Adjust the padding for the special keys */
     }
 }
 
@@ -197,8 +198,20 @@ body {
         font-size: 1em;
     }
 
+    #keyboard {
+        grid-template-columns: repeat(10, 1fr); /* Keep the 10 columns layout */
+        gap: 3px; /* Further reduce the gap for a compact fit */
+    }
+
     .key {
-        font-size: 0.8em;
-        padding: 6px 0;
+        font-size: 0.85em; /* Slightly smaller font size for keys */
+        padding: 10px 0; /* Ensure keys are easy to press */
+    }
+
+    .key.enter, .key.delete {
+        grid-column: span 2;
+        font-size: 1em;
+        padding: 12px 0; /* Larger padding for important keys */
     }
 }
+

@@ -15,25 +15,16 @@
         </div>
     </div>
     <div id="end-screen" class="hidden">
-        <div class="heart">
-            <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <linearGradient id="particleGradient" gradientTransform="rotate(90)">
-                        <stop offset="0%" stop-color="red" stop-opacity="1">
-                            <animate attributeName="stop-color" values="red;orange;yellow;red" dur="3s" repeatCount="indefinite" />
-                        </stop>
-                        <stop offset="100%" stop-color="yellow" stop-opacity="1">
-                            <animate attributeName="stop-color" values="yellow;red;orange;yellow" dur="3s" repeatCount="indefinite" />
-                        </stop>
-                    </linearGradient>
-                </defs>
-                <path d="M100 160 L40 90 A40 40 0 1 1 100 30 A40 40 0 1 1 160 90 Z"></path>
-            </svg>
-            <p>Sorry</p>
-            <div class="fireworks"></div>
+        <div class="love-letter">
+            <div class="envelope" onclick="openLetter()">
+                <div class="flap"></div>
+                <div class="body">
+                    <p class="message hidden">Lieve Hasti, </p>
+                        <p class="message hidden">Ik wilde je even laten weten hoe speciaal je voor me bent. Je hebt een plek in mijn leven die ik koester en ik ben zo dankbaar voor alles wat je voor me betekent. Ik moet eerlijk zijn en zeggen dat ik soms onzeker ben, vooral omdat ik bang ben om je te verliezen. Dat is iets waar ik aan ga werken, omdat je het niet verdient om met iemand om te gaan die dat soort angsten heeft. Je verdient alleen maar liefde en vertrouwen. Ik hoop dat je begrijpt dat mijn gevoelens niet jouw schuld zijn, maar iets wat ik zelf moet verwerken. Bedankt dat je er altijd voor me bent. Jij bent echt een heel bijzonder persoon voor mij.</p>
+                </div>
+            </div>
         </div>
-    </div>
-    
+    </div>    
     <script src="script.js"></script>
 </body>
 </html>

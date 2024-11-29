@@ -83,50 +83,21 @@ function submitGuess() {
 
     currentGuess = "";
 }
-function createFireworkBurst(container, xCenter, yCenter) {
-    const colors = ['#FF5733', '#FFC300', '#DAF7A6', '#900C3F', '#581845'];
+function openLetter() {
+    const envelope = document.querySelector('.envelope');
+    const messages = document.querySelectorAll('.message');
 
-    for (let i = 0; i < 50; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('firework');
-        container.appendChild(particle);
+    // Open the envelope
+    envelope.classList.add('opened');
 
-        // Randomize particle direction and position
-        const angle = Math.random() * 2 * Math.PI; // Random angle in radians
-        const distance = Math.random(); // Distance multiplier (0-1)
-        const x = Math.cos(angle) * distance;
-        const y = Math.sin(angle) * distance;
-
-        particle.style.setProperty('--x', x);
-        particle.style.setProperty('--y', y);
-
-        // Set position relative to the heart center
-        particle.style.left = `${xCenter}px`;
-        particle.style.top = `${yCenter}px`;
-
-        // Randomize color
-        const color = colors[Math.floor(Math.random() * colors.length)];
-        particle.style.backgroundColor = color;
-
-        // Remove particle after animation
-        setTimeout(() => {
-            particle.remove();
-        }, 1500); // Matches animation duration
-    }
+    // Reveal messages
+    setTimeout(() => {
+        messages.forEach(message => {
+            message.classList.remove('hidden');
+        });
+    }, 500); // Delay to sync with animation
 }
 
-function startContinuousFireworks() {
-    const fireworksContainer = document.querySelector('.fireworks');
-
-    setInterval(() => {
-        const xCenter = fireworksContainer.offsetWidth / 2;
-        const yCenter = fireworksContainer.offsetHeight / 2;
-        createFireworkBurst(fireworksContainer, xCenter, yCenter);
-    }, 2000); // Create a new burst every 2 seconds
-}
-
-// Start fireworks on page load or when the end screen is shown
-startContinuousFireworks();
 
 
 // Toon het eindscherm
