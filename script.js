@@ -97,6 +97,12 @@ function openLetter() {
         });
     }, 500); // Delay to sync with animation
 }
+// Example of showing the love letter after the game ends
+function showLoveLetter() {
+    const loveLetter = document.querySelector('.love-letter');
+    loveLetter.style.visibility = 'visible'; // Make it visible
+    loveLetter.classList.add('opened'); // Trigger animation
+}
 
 
 
